@@ -12,4 +12,4 @@ My background is GPU systems. Lately most of my work is evaluation and reinforce
 - [heliostune](https://github.com/mottopanikeiku/heliostune): Triton autotuning across four NVIDIA GPUs. Tuning data from other GPUs didn’t help, and torch.matmul beat every tuned kernel.
 - [attention-numerics](https://github.com/mottopanikeiku/attention-numerics): rounding error in BF16 and FP8 attention, emulated against a float64 reference. Rotating inputs before FP8 rounding can make error much worse when keys share a common component.
 
-Merged fixes in Ray, Sentence Transformers, and SGLang. More at [mottopanikeiku.github.io](https://mottopanikeiku.github.io).
+Merged fixes in Ray, Sentence Transformers, SGLang, and Celery. More at [mottopanikeiku.github.io](https://mottopanikeiku.github.io).

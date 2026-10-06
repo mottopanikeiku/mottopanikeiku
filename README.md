@@ -5,6 +5,7 @@ My background is GPU systems. Lately most of my work is evaluation and reinforce
 **Start here**
 
 - [eval-power](https://github.com/mottopanikeiku/eval-power): how many benchmark items it takes to tell two LLMs apart, and how often a small pilot gets that number wrong.
+- [control-clock](https://github.com/mottopanikeiku/control-clock): seconds from a fresh Python process to a policy that passes CartPole or Acrobot on a laptop CPU. Random search over linear policies beat every PPO on CartPole; tuned PPO won Acrobot.
 - [quantile-cycles](https://github.com/mottopanikeiku/quantile-cycles): a counterexample in distributional RL, checked in exact rational arithmetic.
 - [faultline](https://github.com/mottopanikeiku/faultline): recurrent PPO agents that have to run a cheap test before an expensive repair. The curriculum effect I was testing for didn’t hold up across seeds.
 - [branchpilot](https://github.com/mottopanikeiku/branchpilot): a learned stopping rule for self-consistency sampling. A simple agreement rule won on GSM8K.

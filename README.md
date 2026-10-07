@@ -14,4 +14,4 @@ My background is GPU systems. Lately most of my work is evaluation and reinforce
 - [faultline](https://github.com/mottopanikeiku/faultline): recurrent PPO agents that have to run a cheap test before an expensive repair. The curriculum effect I was testing for didn’t hold up across seeds.
 - [heliostune](https://github.com/mottopanikeiku/heliostune): Triton autotuning across four NVIDIA GPUs. Tuning data from other GPUs didn’t help, and torch.matmul beat every tuned kernel.
 
-Merged fixes in Ray, Sentence Transformers, SGLang, and Celery. More at [mottopanikeiku.github.io](https://mottopanikeiku.github.io).
+Merged fixes in Pytorch, Ray, Sentence Transformers, SGLang, and Celery. More at [mottopanikeiku.github.io](https://mottopanikeiku.github.io).

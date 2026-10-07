@@ -13,7 +13,7 @@ My background is GPU systems. Lately most of my work is evaluation and reinforce
 - [quantile-cycles](https://github.com/mottopanikeiku/quantile-cycles): a counterexample in distributional RL, checked in exact rational arithmetic and in Lean.
 - [verge-lab](https://github.com/mottopanikeiku/verge-lab): picking preference pairs from multi-aspect judge scores, and abstaining when the aspects disagree. Against human preferences it did no better than a simple score-gap rule.
 - [branchpilot](https://github.com/mottopanikeiku/branchpilot): a learned stopping rule for self-consistency sampling. Simple agreement rules won on GSM8K and on a MATH-500 holdout.
-- [faultline](https://github.com/mottopanikeiku/faultline): recurrent PPO agents that have to run a cheap test before an expensive repair. The curriculum effect I was testing for didn’t hold up across seeds.
+- [faultline](https://github.com/mottopanikeiku/faultline): recurrent PPO agents that have to run a cheap test before an expensive repair. Across 375 seeds per curriculum, training only on ambiguous faults beat random sampling by 10 points but lost to a difficulty curriculum by 6.
 - [heliostune](https://github.com/mottopanikeiku/heliostune): Triton autotuning across four NVIDIA GPUs. Tuning data from other GPUs didn’t help, and on the H100 torch.matmul beat all 36 tuned configurations on every workload.
 
 Merged fixes in PyTorch, Ray, Sentence Transformers, SGLang, and Celery. More at [mottopanikeiku.github.io](https://mottopanikeiku.github.io).

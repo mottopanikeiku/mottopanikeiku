@@ -16,4 +16,4 @@ My background is GPU systems. Lately most of my work is evaluation and reinforce
 - [faultline](https://github.com/mottopanikeiku/faultline): recurrent PPO agents that have to run a cheap test before an expensive repair. Across 375 seeds per curriculum, training only on ambiguous faults beat random sampling by 10 points but lost to a difficulty curriculum by 6.
 - [heliostune](https://github.com/mottopanikeiku/heliostune): Triton autotuning across four NVIDIA GPUs. Tuning data from other GPUs didn’t help. On the H100, ten added kernel configurations beat torch.matmul on 9 of 96 workloads, up from none (six wins used split-K, none the persistent kernel); torch still won most.
 
-Merged fixes in PyTorch, Ray, Sentence Transformers, SGLang, and Celery. More at [mottopanikeiku.github.io](https://mottopanikeiku.github.io).
+Merged pull requests in PyTorch, Ray, Sentence Transformers, SGLang, Celery, and the Arcade Learning Environment. More at [mottopanikeiku.github.io](https://mottopanikeiku.github.io).

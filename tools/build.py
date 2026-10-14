@@ -211,16 +211,27 @@ def alignmenttax(c: Canvas, p: dict) -> None:
         lx += 29 + caption(c, p, s, lx + 13, ly)
 
 
-def bitbound(c: Canvas, p: dict) -> None:
-    image = base64.b64encode((ASSETS / "src" / "bitbound-title.webp").read_bytes()).decode()
-    c.raw(f'<clipPath id="shot"><rect x="{PAD}" y="{FIG_Y}" width="{FIG_W}" height="{FIG_H}" rx="6"/></clipPath>')
-    c.raw(f'<image x="{PAD}" y="{FIG_Y}" width="{FIG_W}" height="{FIG_H}" clip-path="url(#shot)" '
-          f'preserveAspectRatio="xMidYMid slice" href="data:image/webp;base64,{image}"/>')
-    c.raw(f'<rect x="{PAD + 0.5}" y="{FIG_Y + 0.5}" width="{FIG_W - 1}" height="{FIG_H - 1}" rx="6" fill="none" '
-          f'stroke="{p["rule"]}"/>')
+def screenshot(name: str):
+    """A card figure that shows a committed screenshot from assets/src/."""
+    def figure(c: Canvas, p: dict) -> None:
+        image = base64.b64encode((ASSETS / "src" / name).read_bytes()).decode()
+        c.raw(f'<clipPath id="shot"><rect x="{PAD}" y="{FIG_Y}" width="{FIG_W}" height="{FIG_H}" rx="6"/></clipPath>')
+        c.raw(f'<image x="{PAD}" y="{FIG_Y}" width="{FIG_W}" height="{FIG_H}" clip-path="url(#shot)" '
+              f'preserveAspectRatio="xMidYMid slice" href="data:image/webp;base64,{image}"/>')
+        c.raw(f'<rect x="{PAD + 0.5}" y="{FIG_Y + 0.5}" width="{FIG_W - 1}" height="{FIG_H - 1}" rx="6" fill="none" '
+              f'stroke="{p["rule"]}"/>')
+    figure.screenshot = True
+    return figure
 
+
+ALIGNMENTTAX = ("alignmenttax", "Calibration", "alignmenttax",
+                "Does instruction tuning trade calibration for truthfulness? Across nine base/instruct pairs, it depends on the scoring.",
+                alignmenttax)
 
 CARDS = [
+    ("pushable", "Robot RL", "pushable",
+     "Go1 and G1 policies trained with RL on one GPU, live in your browser. Shove them; the dog gets back up.",
+     screenshot("pushable-robots.webp")),
     ("attention-numerics", "FP8 attention", "attention-numerics",
      "Rotating queries and keys before FP8 rounding doubled Qwen2.5-7B’s accuracy loss. Centering the keys removed it.",
      attention),
@@ -233,13 +244,13 @@ CARDS = [
     ("quantile-cycles", "RL theory", "quantile-cycles",
      "Greedy control with quantile-projected Bellman updates can alternate forever between the best action and a worse one.",
      quantile_cycles),
-    ("alignmenttax", "Calibration", "alignmenttax",
-     "Does instruction tuning trade calibration for truthfulness? Across nine base/instruct pairs, it depends on the scoring.",
-     alignmenttax),
     ("bitbound", "Browser game", "Bitbound",
      "A pixel-art RPG where quantization grids power the spells and puzzles. It plays in the browser.",
-     bitbound),
+     screenshot("bitbound-title.webp")),
 ]
+
+# Figures that also sit at the top of the projects' own READMEs (written by --heroes).
+README_FIGURES = [entry for entry in CARDS if not getattr(entry[4], "screenshot", False)] + [ALIGNMENTTAX]
 
 
 def card(p: dict, label: str, title: str, body: str, figure) -> str:
@@ -275,8 +286,9 @@ def main() -> None:
         (ASSETS / f"header-{theme}.svg").write_text(header(p))
         for slug, label, title, body, figure in CARDS:
             (ASSETS / f"{slug}-{theme}.svg").write_text(card(p, label, title, body, figure))
-            if args.heroes and figure is not bitbound:
-                args.heroes.mkdir(parents=True, exist_ok=True)
+        if args.heroes:
+            args.heroes.mkdir(parents=True, exist_ok=True)
+            for slug, _, title, body, figure in README_FIGURES:
                 (args.heroes / f"{slug}-{theme}.svg").write_text(hero(p, title, body, figure))
     for path in sorted(ASSETS.glob("*.svg")):
         print(f"{path.name:32s} {path.stat().st_size / 1024:5.1f} KB")

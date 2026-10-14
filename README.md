@@ -2,7 +2,7 @@
 
 I’m building [Tenth Man Labs](https://tenthmanlabs.com). We put probabilities on geopolitical events, with the sources behind each number and a dated record of how it moved. My background is GPU systems; lately most of my work is evaluation and reinforcement learning.
 
-<p>
+<p align="center">
 <a href="https://github.com/mottopanikeiku/attention-numerics"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/attention-numerics-dark.svg"><img alt="attention-numerics: rotating queries and keys before FP8 rounding doubled Qwen2.5-7B’s HellaSwag accuracy loss (80.9% with BF16, 63.7% with FP8, 45.5% with rotation); centering the keys restored 81.0%." src="assets/attention-numerics-light.svg" width="410"></picture></a>
 <a href="https://github.com/mottopanikeiku/eval-power"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/eval-power-dark.svg"><img alt="eval-power: how many benchmark items it takes to tell two LLMs apart. 23 of 27 planned comparisons found the difference they were sized for." src="assets/eval-power-light.svg" width="410"></picture></a>
 <a href="https://github.com/mottopanikeiku/cpu-decode"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/cpu-decode-dark.svg"><img alt="cpu-decode: a from-scratch C++ int8 decoder for Qwen2.5-0.5B, peaking at 83% of the laptop’s estimated memory-read ceiling, level with llama.cpp at its best thread count." src="assets/cpu-decode-light.svg" width="410"></picture></a>

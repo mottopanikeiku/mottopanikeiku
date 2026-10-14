@@ -1,15 +1,18 @@
 # /// script
 # requires-python = ">=3.11"
-# dependencies = ["uharfbuzz>=0.39", "fonttools>=4.50", "pillow>=10"]
+# dependencies = ["uharfbuzz>=0.39", "fonttools>=4.50"]
 # ///
 """Draw the profile header and project cards into assets/.
 
 Run with `uv run tools/build.py`. Numbers come from the personal site's data
 extracts at a pinned commit; each extract records the project commit it was
 read from. The font is Source Serif 4 (SIL OFL) at a pinned Google Fonts commit.
+`--heroes DIR` also writes each research card's figure on its own; those files
+are the docs/hero-*.svg images at the top of the project READMEs.
 """
 from __future__ import annotations
 
+import argparse
 import base64
 import json
 import math
@@ -253,12 +256,28 @@ def card(p: dict, label: str, title: str, body: str, figure) -> str:
     return c.svg()
 
 
+def hero(p: dict, title: str, body: str, figure) -> str:
+    """A card's figure alone, for the top of the project's own README."""
+    h = FIG_H + 36
+    c = Canvas(W, h, f"{title}: {body}")
+    figure(c, p)
+    c.body = [f'<rect x="0.5" y="0.5" width="{W - 1}" height="{h - 1}" rx="10" fill="{p["paper"]}" stroke="{p["rule"]}"/>',
+              f'<g transform="translate(0 {18 - FIG_Y})">', *c.body, "</g>"]
+    return c.svg()
+
+
 def main() -> None:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--heroes", type=Path, help="also write each research card's figure to DIR/<slug>-<theme>.svg")
+    args = parser.parse_args()
     ASSETS.mkdir(exist_ok=True)
     for theme, p in THEMES.items():
         (ASSETS / f"header-{theme}.svg").write_text(header(p))
         for slug, label, title, body, figure in CARDS:
             (ASSETS / f"{slug}-{theme}.svg").write_text(card(p, label, title, body, figure))
+            if args.heroes and figure is not bitbound:
+                args.heroes.mkdir(parents=True, exist_ok=True)
+                (args.heroes / f"{slug}-{theme}.svg").write_text(hero(p, title, body, figure))
     for path in sorted(ASSETS.glob("*.svg")):
         print(f"{path.name:32s} {path.stat().st_size / 1024:5.1f} KB")
 

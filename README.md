@@ -4,7 +4,7 @@ each result links to committed evidence. more experiments and write-ups at [alpc
 
 ### evals
 
-- [tithe](https://github.com/mottopanikeiku/tithe) — does instruction tuning trade calibration for truthfulness? [on the same 779 questions, it worsens ece in 8 of 9 pairs under a/b-label scoring and in none under full-string scoring](https://github.com/mottopanikeiku/tithe/blob/8c3e4e50bd6f94a6f574a466466934acc8499e9f/README.md?plain=1#L3). [write-up](https://mottopanikeiku.github.io/projects/alignmenttax/)
+- [tithe](https://github.com/mottopanikeiku/tithe) — does instruction tuning trade calibration for truthfulness? [on the same 779 questions with shared prompts, 95% intervals resolve ece worsening in 8 of 9 label-scored pairs and none of the full-string-scored pairs](https://github.com/mottopanikeiku/tithe/blob/8c3e4e50bd6f94a6f574a466466934acc8499e9f/README.md?plain=1#L3). [write-up](https://mottopanikeiku.github.io/projects/alignmenttax/)
   <details><summary>details</summary>
 
   it depends on how i score the answer: on [the same 779 questions and answers, instruction tuning worsens ece in 8 of 9 pairs when i score the a/b label, but improves it in 6 and worsens it in none when i score the two answers as full strings (shared prompts, 95% intervals)](https://github.com/mottopanikeiku/tithe/blob/8c3e4e50bd6f94a6f574a466466934acc8499e9f/README.md?plain=1#L3). the prompts and scored text still differ, so this doesn't show what causes the flip.

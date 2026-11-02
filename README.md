@@ -1,8 +1,8 @@
 I’m turning language models into superforecasters, and alongside that I build RL environments and evals and write CUDA, Triton and CPU kernels that make inference faster. There’s a longer list of what I’ve made on [alpcetin.com](https://alpcetin.com).
 
-<a href="https://mottopanikeiku.github.io/lockstep/"><img src="https://raw.githubusercontent.com/mottopanikeiku/lockstep/main/docs/screenshot.png" width="720" alt="lockstep: the dot product level mid-run, with three of every four lanes masked off by a branch and the shared array's reads marked"></a>
+<a href="https://mottopanikeiku.github.io/lockstep/"><img src="https://raw.githubusercontent.com/mottopanikeiku/lockstep/main/docs/demo.gif" width="720" alt="lockstep playing back a dot product kernel, where the warp timeline fills in while the reduction switches off more lanes of each warp every round"></a>
 
-**[lockstep](https://mottopanikeiku.github.io/lockstep/)** is a browser game for learning CUDA in which you write a kernel and a simulated GPU runs it warp by warp, so you can watch divergent branches, scattered loads and bank conflicts cost you cycles and get caught the moment you write a race. Its twenty levels start with a one-line map and end with flash attention.
+**[lockstep](https://mottopanikeiku.github.io/lockstep/)** is a browser game for learning CUDA in which you write a kernel and a simulated GPU runs it warp by warp, so you can watch divergent branches, scattered loads and bank conflicts cost you cycles and get caught the moment you write a race. Its twenty levels start with a one-line map and end with flash attention, and the starter and reference kernels for all of them compile unchanged with nvcc.
 
 **[doomformer](https://github.com/mottopanikeiku/doomformer)** compiles integer neural networks into DOOM maps, where voodoo dolls do the arithmetic. Draw a digit on the floor and the dolls classify it, or load the [museum map](https://github.com/mottopanikeiku/doomformer/releases/download/v0.7.1/museum.wad) in GZDoom and rewire its network while it runs.
 

@@ -4,7 +4,7 @@ I’m turning language models into superforecasters, and alongside that I build 
 
 **[lockstep](https://mottopanikeiku.github.io/lockstep/)** is a browser game for learning CUDA in which you write a kernel and a simulated GPU runs it warp by warp, so you can watch divergent branches, scattered loads and bank conflicts cost you cycles and get caught the moment you write a race. Its twenty levels start with a one-line map and end with flash attention, and the starter and reference kernels for all of them compile unchanged with nvcc.
 
-**[doomformer](https://github.com/mottopanikeiku/doomformer)** compiles integer neural networks into DOOM maps, where voodoo dolls do the arithmetic. Draw a digit on the floor and the dolls classify it, or load the [museum map](https://github.com/mottopanikeiku/doomformer/releases/download/v0.7.1/museum.wad) in GZDoom and rewire its network while it runs.
+**[doomformer](https://github.com/mottopanikeiku/doomformer)** compiles integer neural networks into DOOM maps, where voodoo dolls do the arithmetic. In the [DrawPad map](https://github.com/mottopanikeiku/doomformer/releases/download/v0.7.2/drawpad.wad) you draw a digit on the floor in GZDoom and 1,355 voodoo dolls in the same map read it with an MNIST network, while the [museum map](https://github.com/mottopanikeiku/doomformer/releases/download/v0.7.1/museum.wad) lets you rewire a smaller network as it runs.
 
 **[abacus](https://github.com/mottopanikeiku/abacus)** is a CPU inference engine for Qwen3 written in C, which starts as a naive float loop and gains one optimization per commit, each one timed against llama.cpp. On a Graviton4 it ends up tied with llama.cpp Q8_0 on decode and 1.5–1.7× faster on prefill.
 
